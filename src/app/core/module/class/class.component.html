@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">List Class</div>
+    <div class="card-body">
+      <button class="btn btn-success" (click)="addNewClass()">Add new</button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Class name</th>
+            <th scope="col">Class quota</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let class of classData; let i = index;">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ class.class_name }}</td>
+            <td>{{ class.class_quota }}</td>
+            <td>
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
