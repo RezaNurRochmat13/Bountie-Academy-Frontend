@@ -35,7 +35,6 @@ export class EditClassComponent implements OnInit {
       this.classId = params['id'];
       this.classSvc.getSingleClass(this.classId).subscribe(response => {
         this.detailClass = response.data;
-        console.log(this.detailClass);
       });
     });
   }

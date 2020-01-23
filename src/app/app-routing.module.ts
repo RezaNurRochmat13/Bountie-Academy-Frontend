@@ -5,6 +5,8 @@ import { ClassComponent } from './core/module/class/class.component';
 import { InstructorComponent } from './core/module/instructor/instructor.component';
 import { AddClassComponent } from './core/module/class/add-class/add-class.component';
 import { EditClassComponent } from './core/module/class/edit-class/edit-class.component';
+import { AddInstructorComponent } from './core/module/instructor/add-instructor/add-instructor.component';
+import { EditInstructorComponent } from './core/module/instructor/edit-instructor/edit-instructor.component';
 
 
 const routes: Routes = [
@@ -31,7 +33,20 @@ const routes: Routes = [
   },
   {
     path: 'instructor',
-    component: InstructorComponent
+    children: [
+      {
+        path: '',
+        component: InstructorComponent
+      },
+      {
+        path: 'add',
+        component: AddInstructorComponent
+      },
+      {
+        path: 'edit/:id',
+        component: EditInstructorComponent
+      }
+    ]
   }
 ];
 

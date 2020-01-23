@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">Form Edit Instructor</div>
+    <div class="card-body">
+      <form [formGroup]="editInstructor" (ngSubmit)="onFormUpdateInstructorSubmitted()">
+        <div class="form-group">
+          <label>Instructor name</label>
+          <input type="text" 
+          class="form-control" 
+          value="{{ detailInstructor.instructor_name }}"
+          formControlName="instructorName">
+        </div>
+        <div class="form-group">
+          <label>Instructor proficiency</label>
+          <input type="text" 
+          class="form-control" 
+          value="{{ detailInstructor.instructor_proficiency }}"
+          formControlName="instructorProficiency">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-default" (click)="back()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

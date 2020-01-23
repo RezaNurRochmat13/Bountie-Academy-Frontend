@@ -16,6 +16,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AddClassComponent } from './core/module/class/add-class/add-class.component';
 import { EditClassComponent } from './core/module/class/edit-class/edit-class.component';
+import { AddInstructorComponent } from './core/module/instructor/add-instructor/add-instructor.component';
+import { EditInstructorComponent } from './core/module/instructor/edit-instructor/edit-instructor.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { EditClassComponent } from './core/module/class/edit-class/edit-class.co
     AddClassComponent,
     EditClassComponent,
     InstructorComponent,
+    AddInstructorComponent,
+    EditInstructorComponent,
     StudentsComponent
   ],
   imports: [

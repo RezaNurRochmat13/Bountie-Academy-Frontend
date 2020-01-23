@@ -1,3 +1,30 @@
-<p>
-  instructor works!
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">List Instructor</div>
+    <div class="card-body">
+      <button class="btn btn-success" (click)="addNewInstructor()">Add new</button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Instructor name</th>
+            <th scope="col">Instructor proficiency</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let instructor of allInstructorData; let i = index;">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ instructor.instructor_name }}</td>
+            <td>{{ instructor.instructor_proficiency }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="updateInstructor(instructor.instructor_id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteInstructor(instructor.instructor_id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
