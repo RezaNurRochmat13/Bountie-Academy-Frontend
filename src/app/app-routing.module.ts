@@ -7,12 +7,24 @@ import { AddClassComponent } from './core/module/class/add-class/add-class.compo
 import { EditClassComponent } from './core/module/class/edit-class/edit-class.component';
 import { AddInstructorComponent } from './core/module/instructor/add-instructor/add-instructor.component';
 import { EditInstructorComponent } from './core/module/instructor/edit-instructor/edit-instructor.component';
+import { AddStudentComponent } from './core/module/students/add-student/add-student.component';
+import { EditStudentComponent } from './core/module/students/edit-student/edit-student.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: StudentsComponent,
+    children: [
+      {
+        path: 'add',
+        component: AddStudentComponent
+      }, 
+      {
+        path: 'edit/:id',
+        component: EditStudentComponent
+      }
+    ]
   },
   {
     path: 'class',
