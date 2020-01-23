@@ -18,8 +18,8 @@
             <td>{{ class.class_name }}</td>
             <td>{{ class.class_quota }}</td>
             <td>
-              <button class="btn btn-primary">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-primary" (click)="editClass(class.class_id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteClass(class.class_id)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -27,3 +27,4 @@
     </div>
   </div>
 </div>
+

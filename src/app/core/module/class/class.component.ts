@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassService } from '../../service/class.service';
+import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-class',
@@ -12,7 +14,9 @@ export class ClassComponent implements OnInit {
 
   constructor(
     private classSvc: ClassService,
-    private router: Router
+    private router: Router,
+    private location: Location,
+    private toastrSvc: ToastrService
   ) { }
 
   ngOnInit() {
@@ -22,7 +26,6 @@ export class ClassComponent implements OnInit {
   private getAllClassData() {
     this.classSvc.getAllClass().subscribe(response => {
       this.classData = response.data;
-      console.log(response.data);
     });
 
   }
@@ -30,5 +33,19 @@ export class ClassComponent implements OnInit {
   public addNewClass() {
     this.router.navigate(['class/add']);
   }
+
+  public editClass(classId: string) {
+    this.router.navigate(['class/edit/', classId]);
+  }
+
+  public deleteClass(classId: string) {
+    if (confirm("Are sure delete this?")) {
+      this.classSvc.deleteClass(classId).subscribe(response => {
+        this.toastrSvc.success('message', response.message);
+        this.getAllClassData();
+      });
+    }
+  }
+
 
 }

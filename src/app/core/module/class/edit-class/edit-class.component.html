@@ -2,18 +2,27 @@
   <div class="card">
     <div class="card-header">Form Update Class</div>
     <div class="card-body">
-      <form>
+      <form [formGroup]="editClass" (ngSubmit)="onFormUpdateSubmit()">
         <div class="form-group">
           <label>Class name</label>
-          <input type="text" class="form-control" placeholder="class name">
+          <input type="text" 
+          class="form-control" 
+          value="{{ detailClass.class_name }}" 
+          formControlName="className">
         </div>
         <div class="form-group">
           <label>Class quota</label>
-          <input type="number" class="form-control" placeholder="class quota">
+          <input type="number" 
+          class="form-control" 
+          value="{{ detailClass.class_quota }}"
+          formControlName="classQuota">
         </div>
         <div class="form-group">
           <label>Class duration</label>
-          <input type="number" class="form-control" placeholder="class duration">
+          <input type="number" 
+          class="form-control" 
+          value="{{ detailClass.class_duration }}"
+          formControlName="classDuration">
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-default" (click)="back()">Cancel</button>
