@@ -1,3 +1,30 @@
-<p>
-  students works!
-</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">List Students</div>
+    <div class="card-body">
+      <button class="btn btn-success" (click)="addNewStudent()">Add new</button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student name</th>
+            <th scope="col">Student address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of allStudents; let i = index;">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ student.student_name }}</td>
+            <td>{{ student.student_address }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="editStudent(student.student_id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteStudents(student.student_id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -14,8 +14,11 @@ import { EditStudentComponent } from './core/module/students/edit-student/edit-s
 const routes: Routes = [
   {
     path: '',
-    component: StudentsComponent,
     children: [
+      {
+        path: '', 
+        component: StudentsComponent
+      },
       {
         path: 'add',
         component: AddStudentComponent
