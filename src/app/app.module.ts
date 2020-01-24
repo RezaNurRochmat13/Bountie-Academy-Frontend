@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 // Component import
 import { StudentsComponent } from './core/module/students/students.component';
@@ -40,6 +41,7 @@ import { EditStudentComponent } from './core/module/students/edit-student/edit-s
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LoadingBarModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],

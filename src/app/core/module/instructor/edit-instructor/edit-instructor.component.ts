@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { InstructorService } from 'src/app/core/service/instructor.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
+import { InstructorService } from 'src/app/core/service/instructor.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-edit-instructor',
@@ -20,8 +21,9 @@ export class EditInstructorComponent implements OnInit {
   constructor(
     private instructorSvc: InstructorService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private location: Location,
+    private loadingBarSvc: LoadingBarService,
+    private route: ActivatedRoute,
     private toastrSvc: ToastrService
   ) { }
 
@@ -51,7 +53,9 @@ export class EditInstructorComponent implements OnInit {
       instructor_name: this.editInstructor.value.instructorName,
       instructor_proficiency: this.editInstructor.value.instructorProficiency
     };
+    this.loadingBarSvc.start();
     this.instructorSvc.updateInstructor(this.instructorId, updateInstructor).subscribe(response => {
+      this.loadingBarSvc.complete();
       this.toastrSvc.success('message', response.message);
       this.back();
     });

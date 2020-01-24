@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassService } from '../../service/class.service';
 import { ToastrService } from 'ngx-toastr';
-import { Location } from '@angular/common';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-class',
@@ -15,7 +15,7 @@ export class ClassComponent implements OnInit {
   constructor(
     private classSvc: ClassService,
     private router: Router,
-    private location: Location,
+    private loadingBarSvc: LoadingBarService,
     private toastrSvc: ToastrService
   ) { }
 
@@ -24,7 +24,9 @@ export class ClassComponent implements OnInit {
   }
 
   private getAllClassData() {
+    this.loadingBarSvc.start();
     this.classSvc.getAllClass().subscribe(response => {
+      this.loadingBarSvc.complete();
       this.classData = response.data;
     });
 
@@ -40,7 +42,9 @@ export class ClassComponent implements OnInit {
 
   public deleteClass(classId: string) {
     if (confirm("Are sure delete this?")) {
+      this.loadingBarSvc.start();
       this.classSvc.deleteClass(classId).subscribe(response => {
+        this.loadingBarSvc.complete();
         this.toastrSvc.success('message', response.message);
         this.getAllClassData();
       });

@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ClassService } from 'src/app/core/service/class.service';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-add-class',
@@ -16,6 +17,7 @@ export class AddClassComponent implements OnInit {
     private classSvc: ClassService,
     private formBuilder: FormBuilder,
     private location: Location,
+    private loadingBarSvc: LoadingBarService,
     private toastrSvc: ToastrService
   ) { }
 
@@ -37,8 +39,9 @@ export class AddClassComponent implements OnInit {
       class_quota: this.addClass.value.classQuota,
       class_duration: this.addClass.value.classDuration
     }
-
+    this.loadingBarSvc.start();
     this.classSvc.createNewClass(objectAddClass).subscribe(response => {
+      this.loadingBarSvc.complete();
       this.toastrSvc.success('message', response.message);
       this.location.back();
     });
